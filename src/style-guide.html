@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冷杉 Cedar — 視覺風格參考板</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Color Tokens ── */
+    :root {
+      --c-primary:    #1F3864;
+      --c-secondary:  #2E75B6;
+      --c-accent:     #C9A84C;
+      --c-accent-hov: #B8933E;
+      --c-bg-light:   #D9E8F5;
+      --c-white:      #FFFFFF;
+      --c-text:       #1E293B;
+      --c-muted:      #64748B;
+      --c-border:     #E2E8F0;
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--c-text);
+      background: #F8FAFC;
+      line-height: 1.7;
+    }
+
+    /* ── Style Guide Layout ── */
+    .sg-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    .sg-header {
+      text-align: center;
+      padding: 48px 0 64px;
+      border-bottom: 1px solid var(--c-border);
+      margin-bottom: 64px;
+    }
+
+    .sg-header .brand-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--c-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sg-header h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin-bottom: 8px;
+    }
+
+    .sg-header p {
+      font-size: 14px;
+      color: var(--c-muted);
+    }
+
+    /* Section Header */
+    .sg-section {
+      margin-bottom: 72px;
+    }
+
+    .sg-section-title {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    /* ─── 1. COLOR PALETTE ─── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+
+    .color-swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--c-border);
+    }
+
+    .color-block {
+      height: 80px;
+    }
+
+    .color-info {
+      background: white;
+      padding: 12px;
+    }
+
+    .color-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 2px;
+    }
+
+    .color-hex {
+      font-family: 'Inter', monospace;
+      font-size: 12px;
+      color: var(--c-muted);
+    }
+
+    .color-role {
+      font-size: 11px;
+      color: var(--c-muted);
+      margin-top: 4px;
+    }
+
+    /* ─── 2. TYPOGRAPHY ─── */
+    .type-sample {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .type-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--c-muted);
+      margin-bottom: 8px;
+    }
+
+    .type-display {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--c-primary);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .type-h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--c-primary);
+      line-height: 1.3;
+    }
+
+    .type-h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--c-primary);
+    }
+
+    .type-h3 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--c-text);
+    }
+
+    .type-big-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--c-accent);
+      line-height: 1;
+    }
+
+    .type-body {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--c-text);
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    .type-muted {
+      font-size: 14px;
+      color: var(--c-muted);
+    }
+
+    /* ─── 3. BUTTONS ─── */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 4px;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 200ms ease;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--c-accent);
+      color: var(--c-primary);
+    }
+    .btn-primary:hover { background: var(--c-accent-hov); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--c-primary);
+      border: 2px solid var(--c-primary);
+    }
+    .btn-secondary:hover { background: var(--c-primary); color: white; }
+
+    .btn-ghost {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .btn-ghost:hover { background: white; color: var(--c-primary); }
+
+    .btn-text {
+      background: transparent;
+      color: var(--c-secondary);
+      padding: 0;
+      text-decoration: underline;
+      font-size: 15px;
+    }
+
+    /* ─── 4. COMPONENTS ─── */
+
+    /* Stat Card */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--c-primary);
+      color: white;
+      padding: 32px 24px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--c-accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Feature Card */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 200ms;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--c-bg-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--c-primary);
+      font-size: 20px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--c-text);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--c-muted);
+      line-height: 1.6;
+    }
+
+    /* Pain Point Cards */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .pain-card {
+      background: var(--c-bg-light);
+      border-left: 4px solid var(--c-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+    }
+
+    .pain-card p {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      color: var(--c-text);
+      line-height: 1.6;
+    }
+
+    /* ─── 5. SECTIONS ─── */
+
+    /* Hero Preview */
+    .hero-preview {
+      background: var(--c-primary);
+      border-radius: 12px;
+      padding: 64px 48px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-preview::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 50%;
+    }
+
+    .hero-preview::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(201,168,76,0.10);
+      border-radius: 50%;
+    }
+
+    .hero-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--c-accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      max-width: 560px;
+    }
+
+    .hero-title .accent-line {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--c-accent);
+      margin: 16px 0;
+    }
+
+    .hero-sub {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 36px;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-link {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 2px;
+      transition: color 200ms;
+    }
+
+    .hero-link:hover { color: white; }
+
+    /* Bottom CTA */
+    .cta-preview {
+      background: var(--c-primary);
+      border-radius: 12px;
+      padding: 56px 48px;
+      text-align: center;
+    }
+
+    .cta-preview h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .cta-preview p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    /* Nav Preview */
+    .nav-preview {
+      background: var(--c-primary);
+      border-radius: 8px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      margin-bottom: 12px;
+    }
+
+    .nav-logo {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .nav-logo span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--c-accent);
+      margin-left: 8px;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    /* Insight Card */
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .insight-card {
+      background: white;
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 200ms;
+    }
+
+    .insight-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+
+    .insight-card-img {
+      height: 120px;
+      background: var(--c-bg-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-muted);
+      font-size: 13px;
+    }
+
+    .insight-card-body {
+      padding: 20px;
+    }
+
+    .insight-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--c-accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .insight-card-body h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--c-text);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .insight-card-body p {
+      font-size: 13px;
+      color: var(--c-muted);
+      line-height: 1.6;
+    }
+
+    .insight-date {
+      font-size: 12px;
+      color: var(--c-muted);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--c-border);
+    }
+
+    /* Form Preview */
+    .form-preview {
+      background: white;
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      padding: 32px;
+      max-width: 480px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--c-text);
+      margin-bottom: 6px;
+    }
+
+    .form-label .required {
+      color: #E53E3E;
+      margin-left: 2px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--c-border);
+      border-radius: 4px;
+      font-size: 15px;
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--c-text);
+      transition: border-color 200ms;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--c-secondary);
+      box-shadow: 0 0 0 3px rgba(46,117,182,0.12);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* ─── SPACING DEMO ─── */
+    .spacing-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .spacing-box {
+      background: var(--c-bg-light);
+      border: 1px solid var(--c-secondary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 8px;
+    }
+
+    .spacing-label {
+      font-family: 'Inter', monospace;
+      font-size: 11px;
+      color: var(--c-muted);
+      margin-top: 8px;
+    }
+
+    /* ─── DECORATIVE ─── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .section-divider h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--c-primary);
+    }
+
+    .title-accent {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--c-accent);
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-row, .feature-grid, .insight-grid { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sg-page">
+
+  <!-- Header -->
+  <div class="sg-header">
+    <div class="brand-en">Cedar — Visual Style Guide</div>
+    <h1>冷杉視覺風格參考板</h1>
+    <p>Issue #12 | 2026-03-25 | 提交 Peter 確認後進入 Phase 6</p>
+  </div>
+
+  <!-- 1. 色彩系統 -->
+  <div class="sg-section">
+    <div class="sg-section-title">01 — 色彩系統</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1F3864;"></div>
+        <div class="color-info">
+          <div class="color-name">深藏青</div>
+          <div class="color-hex">#1F3864</div>
+          <div class="color-role">主色 — 導覽、背景、標題</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#2E75B6;"></div>
+        <div class="color-info">
+          <div class="color-name">中藍</div>
+          <div class="color-hex">#2E75B6</div>
+          <div class="color-role">副色 — 連結、圖示</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#C9A84C;"></div>
+        <div class="color-info">
+          <div class="color-name">金色</div>
+          <div class="color-hex">#C9A84C</div>
+          <div class="color-role">強調色 — CTA 按鈕、數字</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#D9E8F5; border:1px solid #E2E8F0;"></div>
+        <div class="color-info">
+          <div class="color-name">霧藍</div>
+          <div class="color-hex">#D9E8F5</div>
+          <div class="color-role">淺背景 — 交替區塊</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1E293B;"></div>
+        <div class="color-info">
+          <div class="color-name">深墨</div>
+          <div class="color-hex">#1E293B</div>
+          <div class="color-role">文字色 — 所有正文</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#64748B;"></div>
+        <div class="color-info">
+          <div class="color-name">灰</div>
+          <div class="color-hex">#64748B</div>
+          <div class="color-role">輔助文字 — 說明、日期</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 字體系統 -->
+  <div class="sg-section">
+    <div class="sg-section-title">02 — 字體系統</div>
+
+    <div class="type-sample">
+      <div class="type-label">DISPLAY — Noto Serif TC 700 / 56px / Hero 主標題</div>
+      <div class="type-display">讓公司繼續轉，<br>即使你退了</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">H1 — Noto Serif TC 700 / 40px / 頁面主標題</div>
+      <div class="type-h1">六個後台，全部交給我們</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">H2 — Noto Serif TC 600 / 28px / Section 標題</div>
+      <div class="type-h2">你是不是也有這些煩惱？</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">H3 — Noto Sans TC 700 / 20px / 卡片標題</div>
+      <div class="type-h3">採購管理</div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">大數字 — Playfair Display 700 / 56px / 成效數字</div>
+      <div style="display:flex; gap:48px; align-items:flex-end;">
+        <div>
+          <div class="type-big-number">70–80%</div>
+          <div class="type-muted" style="margin-top:4px;">後台成本壓縮幅度</div>
+        </div>
+        <div>
+          <div class="type-big-number">11萬</div>
+          <div class="type-muted" style="margin-top:4px;">冷杉月費</div>
+        </div>
+        <div>
+          <div class="type-big-number">2個月</div>
+          <div class="type-muted" style="margin-top:4px;">建置費回本時間</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-sample">
+      <div class="type-label">BODY — Noto Sans TC 400 / 17px / 正文段落</div>
+      <div class="type-body">你花了三十年建起這間公司，每一張訂單、每一位員工、每一筆帳，都是你一手打理的。現在，你想退，卻不知道公司沒有你還能不能繼續跑。冷杉，就是為了這個問題而存在的。</div>
+    </div>
+  </div>
+
+  <!-- 3. 按鈕 -->
+  <div class="sg-section">
+    <div class="sg-section-title">03 — 按鈕系統</div>
+    <div class="button-row" style="margin-bottom:16px;">
+      <a href="#" class="btn btn-primary">立即預約諮詢</a>
+      <a href="#" class="btn btn-secondary">了解服務詳情</a>
+      <a href="#" class="btn btn-text">看捷行案例 →</a>
+    </div>
+    <div style="background:var(--c-primary); padding:24px; border-radius:8px; display:inline-flex; gap:16px; align-items:center;">
+      <a href="#" class="btn btn-primary">立即預約諮詢</a>
+      <a href="#" class="btn btn-ghost">了解服務詳情</a>
+    </div>
+  </div>
+
+  <!-- 4. 導覽列 -->
+  <div class="sg-section">
+    <div class="sg-section-title">04 — 導覽列</div>
+    <div class="nav-preview">
+      <div class="nav-logo">冷杉<span>CEDAR</span></div>
+      <ul class="nav-links">
+        <li><a href="#">關於我們</a></li>
+        <li><a href="#">我們的解法</a></li>
+        <li><a href="#">捷行案例</a></li>
+        <li><a href="#">洞見</a></li>
+      </ul>
+      <a href="#" class="btn btn-primary" style="padding:10px 20px; font-size:14px;">立即預約諮詢</a>
+    </div>
+  </div>
+
+  <!-- 5. Hero 區塊 -->
+  <div class="sg-section">
+    <div class="sg-section-title">05 — Hero 區塊</div>
+    <div class="hero-preview">
+      <div class="hero-tag">AI 後台接管服務</div>
+      <div class="hero-title">
+        讓公司繼續轉，
+        <span class="accent-line"></span>
+        即使你退了
+      </div>
+      <p class="hero-sub">冷杉接管你的六個後台職能，月費 11 萬取代市場行情 35–51 萬。捷行國際家居已驗證：後台成本壓縮 70–80%，兩個月回本。</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">立即預約 15 分鐘諮詢</a>
+        <a href="#" class="hero-link">看捷行的案例 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 成效數字區塊 -->
+  <div class="sg-section">
+    <div class="sg-section-title">06 — 成效數字（深色背景）</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">70–80%</div>
+        <div class="stat-label">後台成本壓縮幅度</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">11萬</div>
+        <div class="stat-label">冷杉月費（市場行情 35–51 萬）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2個月</div>
+        <div class="stat-label">建置費回本時間</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 痛點卡片 -->
+  <div class="sg-section">
+    <div class="sg-section-title">07 — 痛點卡片</div>
+    <div style="margin-bottom:16px;">
+      <div class="section-divider">
+        <div>
+          <div class="type-h2">你是不是也有這些煩惱？</div>
+          <span class="title-accent"></span>
+        </div>
+      </div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p>公司每天的事，只有你知道怎麼處理</p>
+      </div>
+      <div class="pain-card">
+        <p>請一個後台團隊，光薪水就 35 萬起跳</p>
+      </div>
+      <div class="pain-card">
+        <p>想退，但不知道公司沒有你還能不能跑</p>
+      </div>
+      <div class="pain-card">
+        <p>接班人還沒準備好，你也還沒準備好放手</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. 功能卡片 -->
+  <div class="sg-section">
+    <div class="sg-section-title">08 — 六大後台職能卡片</div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>採購管理</h3>
+        <p>比價、詢價、請款單確認，全程代理，你只需要看結果。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>人事行政</h3>
+        <p>出勤管理、薪資試算、勞健保作業，無縫接手。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>財務對帳</h3>
+        <p>帳款核對、發票整理、月結報告，準時送到你手上。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. 洞見文章卡片 -->
+  <div class="sg-section">
+    <div class="sg-section-title">09 — 洞見文章卡片</div>
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-body">
+          <div class="insight-tag">接班傳承</div>
+          <h3>家族企業接班困難的真正原因，不是找不到接班人</h3>
+          <p>台灣 6 成企業是家族企業，但接班問題不只是「找誰接」的問題……</p>
+          <div class="insight-date">2026-04-01</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-body">
+          <div class="insight-tag">費用試算</div>
+          <h3>雇 6 個後台人員 vs 月費 11 萬：老闆的費用比較試算</h3>
+          <p>請人 vs 外包，到底差多少？我們幫你把帳算清楚……</p>
+          <div class="insight-date">2026-03-25</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-body">
+          <div class="insight-tag">案例分享</div>
+          <h3>老闆退休了，公司還能繼續跑嗎？</h3>
+          <p>這不是假設，這是捷行國際家居老闆曾經問過自己的問題……</p>
+          <div class="insight-date">2026-03-18</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. 表單 -->
+  <div class="sg-section">
+    <div class="sg-section-title">10 — 預約表單</div>
+    <div class="form-preview">
+      <div style="margin-bottom:24px;">
+        <div class="type-h3" style="margin-bottom:4px;">15 分鐘，聊聊你的公司現況</div>
+        <div class="type-muted">免費諮詢，沒有推銷義務</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">公司名稱<span class="required">*</span></label>
+        <input type="text" class="form-input" placeholder="例：捷行國際家居有限公司">
+      </div>
+      <div class="form-group">
+        <label class="form-label">統一編號<span class="required">*</span></label>
+        <input type="text" class="form-input" placeholder="8 位數字" inputmode="numeric" maxlength="8">
+      </div>
+      <div class="form-group">
+        <label class="form-label">您的姓名<span class="required">*</span></label>
+        <input type="text" class="form-input" placeholder="請輸入姓名">
+      </div>
+      <div class="form-group">
+        <label class="form-label">詢問事項</label>
+        <textarea class="form-input form-textarea" placeholder="可以簡單說一下你目前遇到的問題，或想了解的事（選填）"></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%; text-align:center;">送出預約申請</button>
+      <div class="type-muted" style="text-align:center; margin-top:12px; font-size:13px;">我們會在一個工作天內與您聯繫</div>
+    </div>
+  </div>
+
+  <!-- 11. 底部 CTA -->
+  <div class="sg-section">
+    <div class="sg-section-title">11 — 底部 CTA 區塊（共用）</div>
+    <div class="cta-preview">
+      <h2>準備好讓公司不再只靠你嗎？</h2>
+      <p>15 分鐘免費諮詢，沒有義務，沒有推銷</p>
+      <a href="#" class="btn btn-primary" style="font-size:16px; padding:18px 40px;">立即預約諮詢</a>
+    </div>
+  </div>
+
+</div><!-- /sg-page -->
+
+</body>
+</html>
