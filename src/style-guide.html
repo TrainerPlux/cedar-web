@@ -297,16 +297,25 @@
     }
 
     .feature-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--c-bg-light);
-      border-radius: 8px;
+      width: 52px;
+      height: 52px;
+      background: var(--c-primary);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
-      color: var(--c-primary);
-      font-size: 20px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #ffffff;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .feature-card h3 {
@@ -498,7 +507,7 @@
 
     .nav-links a:hover { color: white; }
 
-    /* Insight Card */
+    /* Insight Card — full-bleed image + gradient overlay */
     .insight-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -506,60 +515,77 @@
     }
 
     .insight-card {
-      background: white;
-      border: 1px solid var(--c-border);
+      position: relative;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: box-shadow 200ms;
+      aspect-ratio: 3 / 4;
+      cursor: pointer;
     }
 
-    .insight-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
-
     .insight-card-img {
-      height: 120px;
-      background: var(--c-bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--c-muted);
-      font-size: 13px;
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 500ms ease;
+    }
+
+    /* placeholder gradients simulating photos */
+    .insight-card-img.img-1 {
+      background-image: linear-gradient(135deg, #2c5364 0%, #203a43 40%, #0f2027 100%);
+    }
+    .insight-card-img.img-2 {
+      background-image: linear-gradient(135deg, #373b44 0%, #4286f4 100%);
+    }
+    .insight-card-img.img-3 {
+      background-image: linear-gradient(135deg, #1a3a2a 0%, #2d6a4f 50%, #52b788 100%);
+    }
+
+    .insight-card:hover .insight-card-img {
+      transform: scale(1.04);
+    }
+
+    .insight-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.45) 45%,
+        rgba(0, 0, 0, 0.0) 100%
+      );
     }
 
     .insight-card-body {
-      padding: 20px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      z-index: 1;
     }
 
     .insight-tag {
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       color: var(--c-accent);
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .insight-card-body h3 {
       font-family: 'Noto Serif TC', serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--c-text);
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
       line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .insight-card-body p {
-      font-size: 13px;
-      color: var(--c-muted);
-      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
     .insight-date {
       font-size: 12px;
-      color: var(--c-muted);
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--c-border);
+      color: rgba(255, 255, 255, 0.55);
     }
 
     /* Form Preview */
@@ -879,19 +905,52 @@
     <div class="sg-section-title">08 — 六大後台職能卡片</div>
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="feature-icon">📋</div>
+        <div class="feature-icon">
+          <!-- 採購管理：購物車 -->
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
         <h3>採購管理</h3>
         <p>比價、詢價、請款單確認，全程代理，你只需要看結果。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">👥</div>
+        <div class="feature-icon">
+          <!-- 人事行政：使用者群組 -->
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <h3>人事行政</h3>
         <p>出勤管理、薪資試算、勞健保作業，無縫接手。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📊</div>
+        <div class="feature-icon">
+          <!-- 財務對帳：文件 + 金額 -->
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        </div>
         <h3>財務對帳</h3>
         <p>帳款核對、發票整理、月結報告，準時送到你手上。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 客服處理：對話框 -->
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>客服處理</h3>
+        <p>詢問回覆、客訴處理、訂單追蹤，統一接管，不漏接。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 倉儲追蹤：箱子 -->
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>倉儲追蹤</h3>
+        <p>庫存盤點、出入貨紀錄、異常通報，即時掌握。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 營運報表：長條圖 -->
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        </div>
+        <h3>營運報表</h3>
+        <p>每週、每月報表自動生成，你只需要看數字做決定。</p>
       </div>
     </div>
   </div>
@@ -901,29 +960,29 @@
     <div class="sg-section-title">09 — 洞見文章卡片</div>
     <div class="insight-grid">
       <div class="insight-card">
-        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-img img-1"></div>
+        <div class="insight-card-overlay"></div>
         <div class="insight-card-body">
           <div class="insight-tag">接班傳承</div>
           <h3>家族企業接班困難的真正原因，不是找不到接班人</h3>
-          <p>台灣 6 成企業是家族企業，但接班問題不只是「找誰接」的問題……</p>
           <div class="insight-date">2026-04-01</div>
         </div>
       </div>
       <div class="insight-card">
-        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-img img-2"></div>
+        <div class="insight-card-overlay"></div>
         <div class="insight-card-body">
           <div class="insight-tag">費用試算</div>
           <h3>雇 6 個後台人員 vs 月費 11 萬：老闆的費用比較試算</h3>
-          <p>請人 vs 外包，到底差多少？我們幫你把帳算清楚……</p>
           <div class="insight-date">2026-03-25</div>
         </div>
       </div>
       <div class="insight-card">
-        <div class="insight-card-img">[ 文章題圖 ]</div>
+        <div class="insight-card-img img-3"></div>
+        <div class="insight-card-overlay"></div>
         <div class="insight-card-body">
           <div class="insight-tag">案例分享</div>
           <h3>老闆退休了，公司還能繼續跑嗎？</h3>
-          <p>這不是假設，這是捷行國際家居老闆曾經問過自己的問題……</p>
           <div class="insight-date">2026-03-18</div>
         </div>
       </div>
