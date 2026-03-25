@@ -79,5 +79,5 @@ Placeholder：可以簡單說一下您目前遇到的問題，或是對冷杉服
 比較習慣用其他方式聯繫？
 
 **說明：**
-您也可以直接寄信到 service@cedar.com，
+您也可以直接寄信到 service@cedar.com.tw，
 我們同樣會在一個工作天內回覆。
