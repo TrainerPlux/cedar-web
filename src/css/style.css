@@ -175,6 +175,12 @@ h1, h2, h3 { font-family: 'Noto Serif TC', serif; line-height: 1.3; }
   color: var(--c-accent);
 }
 
+.nav__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
 .nav__links {
   display: flex;
   gap: 36px;
