@@ -11,3 +11,8 @@ jobs:
     steps:
       - name: Trigger Netlify deploy
         run: curl -X POST -d '{}' ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+
+      - name: Ping Google Search Console sitemap
+        run: |
+          sleep 30
+          curl -s "https://www.google.com/ping?sitemap=https://cedar.tw/sitemap.xml"

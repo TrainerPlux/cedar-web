@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cedar.com.tw/sitemap.xml
+Sitemap: https://cedar.tw/sitemap.xml
