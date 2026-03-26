@@ -1,0 +1,9 @@
+{
+  "name": "cedar-web-scripts",
+  "version": "1.0.0",
+  "description": "Automation scripts for cedar-web",
+  "private": true,
+  "dependencies": {
+    "@notionhq/client": "^2.2.15"
+  }
+}
