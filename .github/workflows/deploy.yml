@@ -9,10 +9,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Netlify deploy
-        run: curl -X POST -d '{}' ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Netlify
+        run: npx netlify-cli deploy --dir=src --prod
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
       - name: Ping Google Search Console sitemap
-        run: |
-          sleep 30
-          curl -s "https://www.google.com/ping?sitemap=https://cedar.tw/sitemap.xml"
+        run: curl -s "https://www.google.com/ping?sitemap=https://cedar.tw/sitemap.xml"
