@@ -100,6 +100,17 @@ cedar-web/
 
 ---
 
+## 部署資訊
+
+- **平台：** Netlify
+- **線上網址：** https://cedar-web-tw.netlify.app
+- **Netlify 後台：** https://app.netlify.com/projects/cedar-web-tw
+- **自動部署：** 已設定。每次 `git push` 到 master branch，GitHub Actions 會自動觸發 Netlify 重新部署
+- **部署來源：** `src/` 資料夾
+- **手動部署指令：** `netlify deploy --dir=src --prod`（需先 `netlify login`）
+
+---
+
 ## 啟動指令
 
 進入 repo 並啟動 Claude Code 後，用以下指令開始：
