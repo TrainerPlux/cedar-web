@@ -1,0 +1,40 @@
+name: Sync Notion Blog Posts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'   # 每天台灣時間早上 10 點
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/package.json
+      - run: npm install
+        working-directory: scripts
+      - name: Sync website
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: node scripts/sync-notion.js
+      - name: Generate social content
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-social.js
+      - name: Commit & push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/insights.html src/insights/
+          git diff --staged --quiet && exit 0
+          git commit -m "chore: sync blog posts from Notion $(date +'%Y-%m-%d %H:%M')"
+          git push
