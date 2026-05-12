@@ -1100,6 +1100,7 @@ h1, h2, h3 { font-family: 'Noto Serif TC', serif; line-height: 1.3; }
   .nav__hamburger { display: flex; }
 
   .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid > *:last-child:nth-child(3n+1) { grid-column: auto; }
   .pain-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; gap: 16px; }
   .insight-grid, .insights-grid { grid-template-columns: 1fr; }
