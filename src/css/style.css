@@ -1115,6 +1115,35 @@ h1, h2, h3 { font-family: 'Noto Serif TC', serif; line-height: 1.3; }
   .post-body { font-size: 16px; }
   .post-body h2 { font-size: 22px; }
   .post-body h3 { font-size: 18px; }
+
+  /* ── Override all inline multi-column grids ── */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.4fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:repeat(3, 1fr)"],
+  [style*="grid-template-columns:56px 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ── Reduce large gaps on mobile ── */
+  [style*="gap:64px"] { gap: 24px !important; }
+  [style*="gap:48px"] { gap: 24px !important; }
+  [style*="gap:40px"] { gap: 20px !important; }
+
+  /* ── Case stats grid: full width ── */
+  [style*="max-width:640px"] { max-width: 100% !important; }
+
+  /* ── Contact: left-side explanation text ── */
+  [style*="grid-template-columns:1fr 1.4fr"] > *:first-child,
+  [style*="grid-template-columns:1fr 1fr"] > *:first-child {
+    min-width: 0;
+  }
+
+  /* ── Solution dimension cards: icon row wraps nicely ── */
+  [style*="grid-template-columns:56px 1fr 1fr"] > .feature-icon {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 480px) {
