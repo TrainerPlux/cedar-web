@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="720" height="160" role="img" aria-label="Cedar 冷杉 logo (light bg)">
+  <title>Cedar / 冷杉 — horizontal lockup, for light backgrounds</title>
+  <defs>
+    
+  </defs>
+  <g transform="translate(4, 8)">
+    <path d="M32 4 a28 28 0 1 0 24 42" stroke="#2fa090" stroke-width="6" stroke-linecap="round" fill="none"></path>
+    <path fill="#2fa090" d="M32 18 l-9 12 h5 l-7 10 h6 l-8 11 h26 l-8 -11 h6 l-7 -10 h5 z"></path>
+    <rect fill="#2fa090" x="29" y="49" width="6" height="6"></rect>
+  </g>
+  <text x="86" y="44" fill="#1a2742" font-family="&#39;Noto Serif TC&#39;,&#39;PingFang TC&#39;,&#39;Source Han Serif TC&#39;,serif" font-weight="700" font-size="38" letter-spacing="6">冷杉</text>
+  <text x="86" y="64" fill="#6b80a3" font-family="&#39;Inter&#39;,-apple-system,BlinkMacSystemFont,&#39;Segoe UI&#39;,sans-serif" font-weight="400" font-size="11" letter-spacing="5">CEDAR</text>
+</svg>
